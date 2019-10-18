@@ -1,9 +1,11 @@
-import React from 'react';
-import ProductList from './pages/products/index';
+import React from 'react'
+import Header from './components/header'
 
 export default function App() {
   return (
-    <ProductList/>
+    <div>
+      <Header />
+    </div>
   )
 }
 
