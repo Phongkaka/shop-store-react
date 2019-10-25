@@ -1,7 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Products from "../../pages/products"
-import Cart from "../../pages/cart"
+import React, { Suspense, lazy } from "react"
+import { Switch, BrowserRouter as Router, Route, Link } from "react-router-dom"
+import RouterPath from '../../constants/router-path'
+
+const Products = lazy(() => import('../../pages/products'))
+const Cart = lazy(() => import('../../pages/cart'))
+const ProductDetail = lazy(() => import('../../pages/product-detail'))
 
 export default function Header() {
   return (
@@ -47,8 +50,13 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <Route path="/products" exact component={Products} />
-        <Route path="/cart" exact component={Cart} />
+        <Suspense fallback={<div>Loading......</div>}>
+          <Switch>
+            <Route exact path={RouterPath.PRODUCTS.path} component={Products} />
+            <Route exact path={RouterPath.CART.path} component={Cart} />
+            <Route exact path="/product-detail" component={ProductDetail} />
+          </Switch>
+        </Suspense>
       </header>
     </Router>
   );

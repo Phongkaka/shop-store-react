@@ -1,35 +1,39 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import RouterPath from '../../../constants/router-path'
 
+import { CartContext } from "../../contexts"
 export default class ItemProduct extends Component {
     
     render() {
-        let { name, img, price} = this.props.product;
+        const { product } = this.props
+        
         return (
             <div className="col-sm-4">
                 <div className="product-image-wrapper">
                     <div className="single-products">
                         <div className="productinfo text-center">
-                            <img src={img} alt="" />
-                            <h2>{price}</h2>
-                            <p>{name}</p>
-                            <Link
-                                to="/cart"
-                                className="btn btn-default add-to-cart"
-                            >
-                                <i className="fa fa-shopping-cart" />Add to cart
-                            </Link>
+                            <img src={product.img} alt={product.img} />
+                            <h2>{product.price}</h2>
+                            <p>{product.name}</p>
+                            {/* <CartContext.Consumer>
+                                {({ addToCart }) => (
+                                <button onClick={() => addToCart(product)}>
+                                    Add to cart
+                                </button>
+                                )}
+                            </CartContext.Consumer> */}
                         </div>
                         <div className="product-overlay">
                             <div className="overlay-content">
-                                <h2>{price}</h2>
-                                <p>{name}</p>
-                                <Link
-                                    to="/cart"
+                                <h2>{product.price}</h2>
+                                <p>{product.name}</p>
+                                {/* <Link
+                                    to={RouterPath.PRODUCT_DETAIL.pathParams(id)}
                                     className="btn btn-default add-to-cart"
                                 >
                                     <i className="fa fa-shopping-cart" />Add to cart
-                                </Link>
+                                </Link> */}
                             </div>
                         </div>
                     </div>

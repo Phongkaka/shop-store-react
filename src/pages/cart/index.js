@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Products extends Component {
+export default class Cart extends Component {
   constructor(props) {
     super(props);
 
@@ -18,7 +18,7 @@ export default class Products extends Component {
               <thead>
                 <tr className="cart_menu">
                   <td className="image">Item</td>
-                  <td className="description" />
+                  <td className="description">Name</td>
                   <td className="price">Price</td>
                   <td className="quantity">Quantity</td>
                   <td className="total">Total</td>
@@ -36,7 +36,6 @@ export default class Products extends Component {
                     <h4>
                       Colorblock Scuba
                     </h4>
-                    <p>Web ID: 1089772</p>
                   </td>
                   <td className="cart_price">
                     <p>$59</p>
