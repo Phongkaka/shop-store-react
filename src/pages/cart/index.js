@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 
 export default class Cart extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      
-    }
-  }
 
   render() {
+    const { cart } = this.props
+    console.log(cart);
+    
     return (
       <section id="cart_items">
         <div className="container">
@@ -29,16 +25,16 @@ export default class Cart extends Component {
                 <tr>
                   <td className="cart_product">
                     <button type="button">
-                      <img src="images/cart/one.png" alt="cart" />
+                      <img src={cart.img} alt="cart" />
                     </button>
                   </td>
                   <td className="cart_description">
                     <h4>
-                      Colorblock Scuba
+                      {cart.name}
                     </h4>
                   </td>
                   <td className="cart_price">
-                    <p>$59</p>
+                    <p>{cart.price}</p>
                   </td>
                   <td className="cart_quantity">
                     <div className="cart_quantity_button">
@@ -48,7 +44,7 @@ export default class Cart extends Component {
                         type="text" name="quantity" 
                         defaultValue={1} 
                         autoComplete="off" 
-                        size={2} 
+                        size={cart.quantity} 
                       />
                       <button className="cart_quantity_down">-</button>
                     </div>

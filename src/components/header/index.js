@@ -1,14 +1,8 @@
-import React, { Suspense, lazy } from "react"
-import { Switch, BrowserRouter as Router, Route, Link } from "react-router-dom"
-import RouterPath from '../../constants/router-path'
-
-const Products = lazy(() => import('../../pages/products'))
-const Cart = lazy(() => import('../../pages/cart'))
-const ProductDetail = lazy(() => import('../../pages/product-detail'))
-
-export default function Header() {
-  return (
-    <Router>
+import React, { Component } from "react";
+import { Link } from "react-router-dom"
+export default class Header extends Component {
+  render() {
+    return (
       <header>
         <div className="header-bottom">
           <div className="container">
@@ -30,14 +24,10 @@ export default function Header() {
                 <div className="mainmenu pull-left">
                   <ul className="nav collapse navbar-collapse">
                     <li>
-                      <Link to="/products">
-                        Products
-                      </Link>
+                      <Link to="/products">Products</Link>
                     </li>
                     <li>
-                    <Link to="/cart">
-                        Cart
-                      </Link>
+                      <Link to="/cart">Cart</Link>
                     </li>
                   </ul>
                 </div>
@@ -50,14 +40,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <Suspense fallback={<div>Loading......</div>}>
-          <Switch>
-            <Route exact path={RouterPath.PRODUCTS.path} component={Products} />
-            <Route exact path={RouterPath.CART.path} component={Cart} />
-            <Route exact path="/product-detail" component={ProductDetail} />
-          </Switch>
-        </Suspense>
       </header>
-    </Router>
-  );
+    );
+  }
 }

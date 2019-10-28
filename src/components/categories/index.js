@@ -10,9 +10,7 @@ export default class Categories extends Component {
                 return (<div key={item.id} className="panel panel-default">
                 <div className="panel-heading">
                     <h4 className="panel-title">
-                        <button type="button" onClick={() => {
-                                onChangeProduct(item.id);
-                            }}>
+                        <button type="button" onClick={() => onChangeProduct(item.id)}>
                             {item.name}
                         </button>
                     </h4>
