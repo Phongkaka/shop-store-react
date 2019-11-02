@@ -20,7 +20,7 @@ export default class CartTotal extends Component {
             type="button"
             className="btn btn-primary waves-effect waves-light"
           >
-            Complete purchase
+            Hoàn tất mua hàng
             <i className="fa fa-angle-right right"></i>
           </button>
         </td>

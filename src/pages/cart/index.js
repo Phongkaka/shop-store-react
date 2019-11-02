@@ -4,8 +4,15 @@ import CartTotal from "./cart-total";
 
 export default class Cart extends Component {
   showListCarts = list => {
+    const { changeQuantity, onDelete } = this.props
     return list.map(item => {
-      return <ItemCart key={item.id} item={item} />;
+      return (
+        <ItemCart 
+          onDelete={onDelete}
+          changeQuantity={changeQuantity} 
+          key={item.id} item={item} 
+        />
+      );
     });
   };
 

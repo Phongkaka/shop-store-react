@@ -2452,3 +2452,14 @@ textarea {
 .cart_quantity_button button {
     font-size: 20px;
 }
+
+.total__cart {
+  color: #fff;
+  font-style: unset;
+  position: absolute;
+  top: -12px;
+  right: -28px;
+  border-radius: 50%;
+  background: red;
+  padding: 0 7px;
+}

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom"
 export default class Header extends Component {
   render() {
+    const { cart } = this.props
+    
     return (
       <header>
         <div className="header-bottom">
@@ -27,7 +29,7 @@ export default class Header extends Component {
                       <Link to="/products">Products</Link>
                     </li>
                     <li>
-                      <Link to="/cart">Cart</Link>
+                      <Link to="/cart">Cart <i className="total__cart">{cart.length}</i></Link>
                     </li>
                   </ul>
                 </div>

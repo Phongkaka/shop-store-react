@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class ItemCart extends Component {
   render() {
-    var {item} = this.props;
+    var { item, changeQuantity, onDelete } = this.props;
 
     return (
       <tr>
@@ -19,23 +19,29 @@ export default class ItemCart extends Component {
         </td>
         <td className="cart_quantity">
           <div className="cart_quantity_button">
-            <button className="cart_quantity_up">+</button>
-            <input
-              className="cart_quantity_input"
-              type="text"
-              name="quantity"
-              defaultValue={1}
-              autoComplete="off"
-              size={item.quantity}
-            />
-            <button className="cart_quantity_down">-</button>
+            <button
+              onClick={() => changeQuantity(item, 1)} 
+              className="cart_quantity_up"
+            >
+              +
+            </button>
+              <span className="quatity__product">{item.quantity}</span>
+            <button 
+              onClick={() => changeQuantity(item, -1)} 
+              className="cart_quantity_down"
+            >
+              -
+            </button>
           </div>
         </td>
         <td className="cart_total">
           <p className="cart_total_price">$59</p>
         </td>
         <td className="cart_delete">
-          <button className="cart_quantity_delete">
+          <button 
+            onClick={() => onDelete(item)}
+            className="cart_quantity_delete"
+          >
             <i className="fa fa-times" />
           </button>
         </td>

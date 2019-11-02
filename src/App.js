@@ -114,10 +114,26 @@ export default class App extends Component {
       this.setState({products})
     }
   }
+
+  changeQuantity = (item,value)=> {
+    const {cart} = this.state;
+    var index = cart.find((x)=>x.id===item.id);
+    index.quantity += value;
+    if (index.quantity===0)
+    cart.splice(cart.indexOf(index), 1);
+    this.setState({cart})
+  }
+
+  onDelete = (item) => {
+    const {cart} = this.state;
+    var index = cart.find((x)=>x.id===item.id);
+    cart.splice(cart.indexOf(index), 1);
+    this.setState({cart})
+  }
   render() {
     return (
       <Router>
-        <Header />
+        <Header cart={this.state.cart} />
         <Suspense fallback={<div>Loading......</div>}>
           <Switch>
             <Route
@@ -136,14 +152,24 @@ export default class App extends Component {
               exact 
               path={RouterPath.CART.path} 
               component={() => (
-                <Cart cart={this.state.cart} />
+                <Cart 
+                  cart={this.state.cart} 
+                  changeQuantity={this.changeQuantity}
+                  onDelete={this.onDelete} 
+                />
               )} 
               
             />
             <Route
               exact
               path={RouterPath.PRODUCT_DETAIL.path}
-              component={ProductDetail}
+              component={() => (
+                <ProductDetail
+                  addToCart={this.addToCart} 
+                  products={this.state.products}
+                  changeQuantity={this.changeQuantity}
+                />
+              )}
             />
           </Switch>
         </Suspense>
