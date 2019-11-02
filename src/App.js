@@ -73,46 +73,6 @@ const categories = [
 
 const cart = [
   {
-    id: 1,
-    name: "Linus Torvalds",
-    img: "/images/shop/product12.jpg",
-    price: 55,
-    categoryId: 1,
-    quantity: 1
-  },
-  {
-    id: 2,
-    name: "Sir Tim Berners-Lee",
-    img: "/images/shop/product11.jpg",
-    price: 55,
-    categoryId: 2,
-    quantity: 1
-  },
-  {
-    id: 3,
-    name: "Donald Knuth",
-    img: "/images/home/product2.jpg",
-    price: 55,
-    categoryId: 1,
-    quantity: 1
-  },
-  {
-    id: 4,
-    name: "Brenden Eich",
-    img: "/images/home/product6.jpg",
-    price: 55,
-    categoryId: 2,
-    quantity: 1
-  },
-  {
-    id: 5,
-    name: "Solomon Hykes",
-    img: "/images/home/product5.jpg",
-    price: 10,
-    categoryId: 3,
-    quantity: 1
-  },
-  {
     id: 6,
     name: "Mark Zuckerberg",
     img: "/images/home/product1.jpg",
@@ -132,11 +92,15 @@ export default class App extends Component {
       cart
     };
   }
-  
-  addToCart = (product) => {
-    var {cart} = this.state;
-    cart = [...cart,{...product, quantity:1}]
 
+  addToCart = (product)=>{
+    const {cart} = this.state; 
+    var index = cart.find((item)=>item.id===product.id); 
+    if (index){ 
+      index.quantity+=1;
+    }else{ 
+      cart.push(product);
+    }
     this.setState({cart})
   }
 

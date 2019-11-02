@@ -5,7 +5,7 @@ import Categorries from '../../components/categories'
 export default class Products extends Component {
   
   render() {
-    var {products, categories, onChangeProduct}  = this.props
+    var {products, categories, onChangeProduct, addToCart}  = this.props
 
     return (
       <div>
@@ -22,7 +22,7 @@ export default class Products extends Component {
                 <div className="features_items">
                   <h2 className="title text-center">Features Items</h2>
                   {products.map((item) => (
-                    <ItemProduct key={item.id} product={item} />
+                    <ItemProduct key={item.id} product={item} addToCart={ addToCart } />
                   ))}
                 </div>
               </div>

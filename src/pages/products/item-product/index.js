@@ -4,12 +4,14 @@ import RouterPath from "../../../constants/router-path";
 
 export default class ItemProduct extends Component {
 
-  onAddProduct = (id) => {
-
+  onAddProduct = (product) => {
+    const { addToCart } = this.props;
+    addToCart({ ...product, quantity: 1 })
   }
+
   render() {
     const { product } = this.props;
-
+    
     return (
       <div className="col-sm-4">
         <div className="product-image-wrapper">
@@ -23,7 +25,7 @@ export default class ItemProduct extends Component {
               <div className="overlay-content">
                 <h2>{product.price}</h2>
                 <p>{product.name}</p>
-                <button onClick={(e) => {e.preventDefault(); this.onAddProduct(product.id)}}>Add to cart</button>
+                <button onClick={() => { this.onAddProduct(product) }}>Add to cart</button>
               </div>
             </div>
           </div>
