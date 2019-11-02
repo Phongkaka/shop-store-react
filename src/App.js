@@ -163,8 +163,10 @@ export default class App extends Component {
             <Route
               exact
               path={RouterPath.PRODUCT_DETAIL.path}
-              component={() => (
+              component={({ match, history }) => (
                 <ProductDetail
+                  history={history} 
+                  match={match}
                   addToCart={this.addToCart} 
                   products={this.state.products}
                   changeQuantity={this.changeQuantity}

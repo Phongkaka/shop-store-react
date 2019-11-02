@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class ItemCart extends Component {
   render() {
-    var { item, changeQuantity, onDelete } = this.props;
+    const { item, changeQuantity, onDelete } = this.props;
 
     return (
       <tr>

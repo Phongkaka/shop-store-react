@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 
 export default class ProductDetail extends Component {
-  
+  onAddProduct = (product) => {
+    const { addToCart } = this.props;
+    addToCart({ ...product, quantity: 1 })
+  }
+
   render() {
+    const { id } = this.props.match.params;
+    let productItem =  this.props.products.find((item) => {
+        return item.id === +id;
+    })
+    
+
     return (
       <section>
         <div className="container">
@@ -11,17 +21,21 @@ export default class ProductDetail extends Component {
               <div className="product-details">
                 <div className="col-sm-5">
                   <div className="view-product">
-                    <img src="images/product-details/1.jpg" alt="img" />
+                    <img src={productItem.img} alt="img" />
                   </div>
                 </div>
                 <div className="col-sm-7">
                   <div className="product-information">
-                    <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
+                    <h2>{productItem.name}</h2>
                     <span>
-                      <span>US $59</span>
-                      <label>Quantity:</label>
-                      <input type="text" defaultValue={3} />
-                      <button type="button" className="btn btn-fefault cart">
+                      <span>{productItem.price}</span>
+                      {/* <label>Quantity:</label>
+                      <input type="text" defaultValue={productItem.quantity} /> */}
+                      <button 
+                        type="button" 
+                        className="btn btn-fefault cart"
+                        onClick={() => { this.onAddProduct(productItem) }}
+                      >
                         <i className="fa fa-shopping-cart" />
                         Add to cart
                       </button>

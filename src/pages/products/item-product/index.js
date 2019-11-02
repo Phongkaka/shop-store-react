@@ -24,19 +24,21 @@ export default class ItemProduct extends Component {
             <div className="product-overlay">
               <div className="overlay-content">
                 <h2>{product.price}</h2>
-                <p>{product.name}</p>
-                <button onClick={() => { this.onAddProduct(product) }}>Add to cart</button>
+                <Link
+                  to={RouterPath.PRODUCT_DETAIL.pathParams(product.id)}
+                  className="name_product"
+                >
+                  {product.name}
+                </Link>
+                <button 
+                  className="btn btn-default add-to-cart"
+                  onClick={() => { this.onAddProduct(product) }}
+                >
+                  <i className="fa fa-shopping-cart" />
+                  Add to cart
+                </button>
               </div>
             </div>
-          </div>
-          <div className="choose">
-            <Link
-              to={RouterPath.PRODUCT_DETAIL.pathParams(product.id)}
-              className="btn btn-default add-to-cart"
-            >
-              <i className="fa fa-shopping-cart" />
-              show detail
-            </Link>
           </div>
         </div>
       
