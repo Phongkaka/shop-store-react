@@ -89,15 +89,16 @@ export default class App extends Component {
     this.state = {
       products,
       categories,
-      cart
+      cart,
+      activePage: 15
     };
   }
 
   addToCart = (product)=>{
     const {cart} = this.state; 
-    var index = cart.find((item)=>item.id===product.id); 
+    const index = cart.find((item)=>item.id === product.id); 
     if (index){ 
-      index.quantity+=1;
+      index.quantityn +=1;
     }else{ 
       cart.push(product);
     }
@@ -130,6 +131,12 @@ export default class App extends Component {
     cart.splice(cart.indexOf(index), 1);
     this.setState({cart})
   }
+
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({ activePage: pageNumber });
+  }
+
   render() {
     return (
       <Router>
@@ -145,6 +152,8 @@ export default class App extends Component {
                   categories={this.state.categories}
                   onChangeProduct={this.onChangeProduct}
                   addToCart={this.addToCart}
+                  handlePageChange={this.handlePageChange}
+                  activePage={this.state.activePage}
                 />
               )}
             />
@@ -163,9 +172,8 @@ export default class App extends Component {
             <Route
               exact
               path={RouterPath.PRODUCT_DETAIL.path}
-              component={({ match, history }) => (
+              component={({ match }) => (
                 <ProductDetail
-                  history={history} 
                   match={match}
                   addToCart={this.addToCart} 
                   products={this.state.products}

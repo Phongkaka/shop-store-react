@@ -4,7 +4,6 @@ export default class CartTotal extends Component {
   render() {
     return (
       <tr>
-        <td colSpan="3"></td>
         <td>
           <h4>
             <strong>Tổng Tiền</strong>

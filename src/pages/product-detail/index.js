@@ -9,10 +9,9 @@ export default class ProductDetail extends Component {
   render() {
     const { id } = this.props.match.params;
     let productItem =  this.props.products.find((item) => {
-        return item.id === +id;
+      return item.id === +id;
     })
     
-
     return (
       <section>
         <div className="container">

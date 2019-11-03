@@ -37,7 +37,6 @@ export default class Cart extends Component {
                   <td className="description">Name</td>
                   <td className="price">Price</td>
                   <td className="quantity">Quantity</td>
-                  <td className="total">Total</td>
                   <td />
                 </tr>
               </thead>

@@ -3,6 +3,10 @@ import { Link } from "react-router-dom"
 export default class Header extends Component {
   render() {
     const { cart } = this.props
+    let quantityCart = 0;
+    cart.forEach(element => {
+      quantityCart += element.quantity;
+    });
     
     return (
       <header>
@@ -29,7 +33,7 @@ export default class Header extends Component {
                       <Link to="/products">Products</Link>
                     </li>
                     <li>
-                      <Link to="/cart">Cart <i className="total__cart">{cart.length}</i></Link>
+                      <Link to="/cart">Cart <i className="total__cart">{quantityCart}</i></Link>
                     </li>
                   </ul>
                 </div>

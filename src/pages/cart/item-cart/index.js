@@ -34,9 +34,6 @@ export default class ItemCart extends Component {
             </button>
           </div>
         </td>
-        <td className="cart_total">
-          <p className="cart_total_price">$59</p>
-        </td>
         <td className="cart_delete">
           <button 
             onClick={() => onDelete(item)}
