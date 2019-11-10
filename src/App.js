@@ -90,7 +90,7 @@ export default class App extends Component {
       products,
       categories,
       cart,
-      activePage: 15
+      activePage: 1
     };
   }
 
@@ -132,7 +132,7 @@ export default class App extends Component {
     this.setState({cart})
   }
 
-  handlePageChange(pageNumber) {
+  handlePageChange = (pageNumber) => {
     console.log(`active page is ${pageNumber}`);
     this.setState({ activePage: pageNumber });
   }

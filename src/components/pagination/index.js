@@ -10,8 +10,8 @@ export default class PaginationComponent extends Component {
       <div>
         <Pagination
           activePage={activePage}
-          itemsCountPerPage={10}
-          totalItemsCount={450}
+          itemsCountPerPage={3}
+          totalItemsCount={6}
           pageRangeDisplayed={5}
           onChange={handlePageChange}
         />
