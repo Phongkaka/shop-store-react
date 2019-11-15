@@ -89,8 +89,7 @@ export default class App extends Component {
     this.state = {
       products,
       categories,
-      cart,
-      activePage: 1
+      cart
     };
   }
 
@@ -132,11 +131,6 @@ export default class App extends Component {
     this.setState({cart})
   }
 
-  handlePageChange = (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
-    this.setState({ activePage: pageNumber });
-  }
-
   render() {
     return (
       <Router>
@@ -152,8 +146,6 @@ export default class App extends Component {
                   categories={this.state.categories}
                   onChangeProduct={this.onChangeProduct}
                   addToCart={this.addToCart}
-                  handlePageChange={this.handlePageChange}
-                  activePage={this.state.activePage}
                 />
               )}
             />

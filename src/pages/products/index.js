@@ -4,14 +4,25 @@ import Categorries from "../../components/categories";
 import Pagination from "../../components/pagination";
 
 export default class Products extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: 1
+    };
+  }
+  
+
+  handlePageChange = (pageNumber) => {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({ activePage: pageNumber });
+  }
+
   render() {
     const { 
             products, 
             categories, 
             onChangeProduct, 
             addToCart,
-            handlePageChange,
-            activePage
           } = this.props;
     const listProduct = products => {
       if (products)
@@ -44,7 +55,7 @@ export default class Products extends Component {
             </div>
           </div>
         </section>
-        <Pagination handlePageChange={handlePageChange} activePage={activePage}  />
+        <Pagination handlePageChange={this.handlePageChange} activePage={this.state.activePage}  />
       </div>
     );
   }
